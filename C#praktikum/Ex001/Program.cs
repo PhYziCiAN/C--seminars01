@@ -43,8 +43,9 @@
 
 
 int[] a = new int[10]; //array with 10 random numbers 10-99
-Random rnd;
-rnd=new Random();
+Random rnd=new Random();
+//rnd=new Random();
+//int i;
 for(int i=0;i<10;i++)
 {
     a[i] = rnd.Next(10,100);
@@ -55,15 +56,15 @@ for(int i = 0;i < 10; i++) //++i лучше
 }
 ///excluding number interrupted increasing order
 Console.WriteLine();
-i = 1;
+//int i = 1;
 int fe = a[0];
 Console.WriteLine(fe);
-while (i <= 9)
-{
-    if (a[i] > fe)
-    {
-        Console.WriteLine (a[i]);
-        fe = a[i];
-    }
-    i++;
-}
+// while (int j=1; j <= 9)
+// {
+//     if (a[i] > fe)
+//     {
+//         Console.WriteLine (a[i]);
+//         fe = a[i];
+//     }
+//     j++;
+// }
