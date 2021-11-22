@@ -1,8 +1,8 @@
 ﻿﻿
-int[] a = {Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday}; //описание массива
-//a=new int[10]; //создание массива
-//int i = 7;
-Console.WriteLine(a[i]+" ");
+// int[] a = {Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday}; //описание массива
+// //a=new int[10]; //создание массива
+// //int i = 7;
+// Console.WriteLine(a[i]+" ");
 
 // for(int j=0;j<7;++j)
 // {
@@ -15,8 +15,9 @@ Console.WriteLine(a[i]+" ");
 // }
 ﻿//int a;
 Console.WriteLine("Input weeks day number: ");
-string s = Console.ReadLine();
+string? s = Console.ReadLine();
 
+if(s=="0") Console.WriteLine("No such day");
 if(s=="1") Console.WriteLine("Monday");
 if(s=="2") Console.WriteLine("Tuesday");
 if(s=="3") Console.WriteLine("Wednesday");
