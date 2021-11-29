@@ -22,12 +22,29 @@ Alt+Shift+F
 даём следующие инструкции игроку. Если пользователь не угадал, то у него сгорает 1 попытка.
 5. Игра продолжается пока есть попытки или пока пользователь не угадал число.
 
-int requNumber() - метод запросит у игрока число, сделает все необходимые преобразования.
+int requestNumber() - метод запросит у игрока число, сделает все необходимые преобразования.
 int createNumber (int leftBound, int rightBound) - загадает число в 
 указанном диапазоне и вернет его нам.
-int SecretNumber = createNumber(1,100);
-int PlayersNumber = requNumber ();
+
 bool MakeMove(int SecretNumber, int AttemptpsCount) -  метод, в котором запрограммирован 1 игровой
 ход, в результате метод возвращает либо true (угадано чсло, остановка игры), 
 либо false (пользователь не угадал).
 */
+int SecretNumber = createNumber(1,100);
+// int PlayersNumber = requestNumber ();
+
+int createNumber(int leftBound, int rightBound)
+{
+    int n = new Random().Next(leftBound, rightBound);
+    return n;
+}
+Console.WriteLine(SecretNumber); //test
+
+int requestNumber()
+{
+    Console.WriteLine("Guess number from 1 to 100");
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}
+int temp = requestNumber();
+Console.WriteLine(temp); //test
