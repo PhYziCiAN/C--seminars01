@@ -36,8 +36,6 @@ int createNumber(int leftBound, int rightBound)
 {
     return new Random().Next(leftBound, rightBound + 1);
 }
-
-
 int leftBound = 1; //test of method
 int rightBound = 100;
 int createNum = createNumber(leftBound, rightBound);
@@ -64,55 +62,51 @@ int requestNumber()
     }
     return requestNumber;
 }
-int requestNum = requestNumber();
+// int requestNum = requestNumber();
 
-    if (requestNum == createNum) //(createNum > leftBound && createNum <= rightBound)
-    {
-        Console.WriteLine("Correct");
-    }
-    else
-    {
-        Console.WriteLine("Not correct");
-    }
-//Console.WriteLine(requestNum); //test
-//Console.WriteLine(createNum); //test
-int attemptsCount = 6;
-bool MakeMove (int createNum, int attemptsCount)
+// if (requestNum == createNum) //(createNum > leftBound && createNum <= rightBound)
+// {
+//     Console.WriteLine("Correct");
+// }
+// else
+// {
+//     Console.WriteLine("Not correct");
+// }
+
+int attemptsCount = 3;
+bool MakeMove(int createNum, int attemptsCount)
 {
     int PlayersNumber = requestNumber();
     if (PlayersNumber == createNum)
-        {
-            Console.WriteLine($"You guess number ");
-            return true;
-        }
+    {
+        Console.WriteLine($"You guess number ");
+        return true;
+    }
     else
-        {
-            attemptsCount--;
-            if (attemptsCount >0)
+    {
+        attemptsCount--;
+        if (attemptsCount > 0 && PlayersNumber != createNum)
             {
-                if (PlayersNumber != createNum)
-                {
-                    Console.WriteLine("You do not guess number");
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("There is no attempts left");
-                    return false;
-                }
+            Console.WriteLine("You do not guess number");
             }
-        }           
+        else
+            {
+                Console.WriteLine("There is no attempts left");
+            }
+        return false;
+    }
 }
 
-int reqNumb0 = 0;
+// int reqNumb0 = 0;
 
-for (int i = 0; i < 5; i++)
+for (int i = 0; i < 3; i++)
 {
-    reqNumb0 = requestNumber();
-    bool reqNumb1 = MakeMove (createNum, attemptsCount);
+    int reqNumb0 = requestNumber();
+    Console.WriteLine($"reqNumb:{reqNumb0}, createNumb:{createNum}");
+    bool reqNumb1 = MakeMove(createNum, attemptsCount);
     if (reqNumb1 == true)
     {
-        Console.WriteLine("Good-bye");
+        Console.WriteLine("You guess.Good-bye");
         break;
     }
 }
