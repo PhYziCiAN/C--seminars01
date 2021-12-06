@@ -1,7 +1,7 @@
 ﻿// Игра "Угадай число"
 /* чтобы ПК загадал число в некотором диапазоне от 1 до 100
 Далее он предлагает игроку угадать это число.
-Игрок вводит некторое число, и ПК отвечает:
+Игрок вводит некоторое число, и ПК отвечает:
 1. Правильное ли это число
 2. Загаданное число больше, чем введенное.
 3. Загаданное число меньше, чем введенное.
@@ -26,29 +26,22 @@ int requestNumber() - метод запросит у игрока число, с
 int createNumber (int leftBound, int rightBound) - загадает число в 
 указанном диапазоне и вернет его нам.
 
-bool MakeMove(int SecretNumber, int AttemptpsCount) -  метод, в котором запрограммирован 1 игровой
+bool MakeMove(int createNum, int AtrequestNumtpsCount) -  метод, в котором запрограммирован 1 игровой
 ход, в результате метод возвращает либо true (угадано чсло, остановка игры), 
 либо false (пользователь не угадал).
 */
-int SecretNumber = createNumber(1, 100); // int PlayersNumber = requestNumber ();
+//int createNum = createNumber(1, 100); // int PlayersNumber = requestNumber ();
 
 int createNumber(int leftBound, int rightBound)
 {
     return new Random().Next(leftBound, rightBound + 1);
 }
-Console.WriteLine(SecretNumber); //test
+
 
 int leftBound = 1; //test of method
 int rightBound = 100;
-int result112 = createNumber(leftBound, rightBound);
-    if (result112 > leftBound && result112 <= rightBound)
-    {
-        Console.WriteLine("Correct");
-    }
-    else
-    {
-        Console.WriteLine("Not correct");
-    }
+int createNum = createNumber(leftBound, rightBound);
+
 int requestNumber()
 {
     int requestNumber = 0;
@@ -57,7 +50,7 @@ int requestNumber()
         Console.WriteLine("Guess number from 1 to 100");
         if (int.TryParse((Console.ReadLine()), out int result))
         {
-            if (result > 0)
+            if (result > 0 && result < 101)
             {
                 requestNumber = result;
                 Console.Clear();
@@ -71,23 +64,33 @@ int requestNumber()
     }
     return requestNumber;
 }
-int temp = requestNumber();
-Console.WriteLine(temp); //test
+int requestNum = requestNumber();
 
-bool MakeMove (int SecretNumber, int AttemptsCount)
+    if (requestNum == createNum) //(createNum > leftBound && createNum <= rightBound)
+    {
+        Console.WriteLine("Correct");
+    }
+    else
+    {
+        Console.WriteLine("Not correct");
+    }
+//Console.WriteLine(requestNum); //test
+//Console.WriteLine(createNum); //test
+int attemptsCount = 6;
+bool MakeMove (int createNum, int attemptsCount)
 {
     int PlayersNumber = requestNumber();
-    if (PlayersNumber == SecretNumber)
+    if (PlayersNumber == createNum)
         {
             Console.WriteLine($"You guess number ");
             return true;
         }
     else
         {
-            AttemptsCount--;
-            if (AttemptsCount >0)
+            attemptsCount--;
+            if (attemptsCount >0)
             {
-                if (PlayersNumber != SecretNumber)
+                if (PlayersNumber != createNum)
                 {
                     Console.WriteLine("You do not guess number");
                     return false;
@@ -95,20 +98,22 @@ bool MakeMove (int SecretNumber, int AttemptsCount)
                 else
                 {
                     Console.WriteLine("There is no attempts left");
+                    return false;
                 }
             }
         }           
 }
 
 int reqNumb0 = 0;
-int AttemptsCount = 6;
+
 for (int i = 0; i < 5; i++)
 {
     reqNumb0 = requestNumber();
-    bool reqNumb1 = MakeMove (int SecretNumber, int AttemptsCount);
+    bool reqNumb1 = MakeMove (createNum, attemptsCount);
     if (reqNumb1 == true)
     {
         Console.WriteLine("Good-bye");
         break;
     }
 }
+MakeMove(createNum, attemptsCount);
